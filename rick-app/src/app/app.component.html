@@ -1,0 +1,36 @@
+ <mat-toolbar>
+    <span> Rick and Morty</span>
+</mat-toolbar>
+
+<div class="container">
+
+  <!-- Buscar-->
+  <div class="search">
+    <input
+     type="text"
+     class="search-form"
+     [formControl]="searchControl"
+     placeholder="Informe pelo menos 3 letras!">
+  </div>
+
+ <!--Lista-->
+  <section *ngIf="characters$ | async as characters" class="characters">
+    <h2 class="characters_heading">Characters </h2>
+      <ul class="list">
+        <li *ngfor="let char of chars">
+        {{char.name}}
+        </li>
+      </ul>
+  </section>
+
+<!--Lista episodeos-->
+  <section *ngIf="episodio$ | async as ep"
+    class="episodio">
+      <h2 class="ep_heading"> Eps</h2>
+      <ul>
+        <li *ngfor="let ep of eps" class="list">
+        {{ep.name}} {{ep.episodio}}
+      </li>
+      </ul>
+  </section>
+</div>
